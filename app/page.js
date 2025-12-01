@@ -3,6 +3,7 @@ import Chooseus from "./components/Chooseus";
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
 import OfferBanner from "./components/OfferBanner";
+import Photogallery from "./components/Photogallery";
 import Popularcategory from "./components/Popularcategory";
 import Specialmenu from "./components/Specialmenu";
 import Testimonials from "./components/Testimonials";
@@ -18,6 +19,7 @@ export default function Home() {
       <OfferBanner/>
       <AboutCafe/>
       <Testimonials/>
+      <Photogallery/>
     </>
   );
 }
