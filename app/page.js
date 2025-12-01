@@ -1,5 +1,6 @@
 import AboutCafe from "./components/AboutCafe";
 import Chooseus from "./components/Chooseus";
+import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
 import OfferBanner from "./components/OfferBanner";
@@ -22,6 +23,7 @@ export default function Home() {
       <Testimonials/>
       <Photogallery/>
       <VisitUs/>
+      <Footer/>
     </>
   );
 }
