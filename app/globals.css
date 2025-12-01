@@ -3,14 +3,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
+
+/* Use :root or data-theme for theming. @theme is not a standard at-rule and will cause "Unknown at rule" errors.
+   Here we set the theme variables at the root level. If you need the theme scoped, use
+   :root[data-theme="inline"] { ... } instead. */
+/* Moved theme variables into :root to avoid unknown at-rule errors. */
 
 @media (prefers-color-scheme: dark) {
   :root {
