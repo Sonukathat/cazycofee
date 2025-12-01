@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import OfferBanner from "./components/OfferBanner";
 import Popularcategory from "./components/Popularcategory";
 import Specialmenu from "./components/Specialmenu";
+import Testimonials from "./components/Testimonials";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Popularcategory/>
       <OfferBanner/>
       <AboutCafe/>
+      <Testimonials/>
     </>
   );
 }
