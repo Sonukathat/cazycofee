@@ -7,6 +7,7 @@ import Photogallery from "./components/Photogallery";
 import Popularcategory from "./components/Popularcategory";
 import Specialmenu from "./components/Specialmenu";
 import Testimonials from "./components/Testimonials";
+import VisitUs from "./components/VisitUs";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <AboutCafe/>
       <Testimonials/>
       <Photogallery/>
+      <VisitUs/>
     </>
   );
 }
