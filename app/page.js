@@ -1,3 +1,4 @@
+import Chooseus from "./components/Chooseus";
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
 import Specialmenu from "./components/Specialmenu";
@@ -8,6 +9,7 @@ export default function Home() {
       <Navbar/>
       <HeroSection/>
       <Specialmenu/>
+      <Chooseus/>
     </>
   );
 }
