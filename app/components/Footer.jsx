@@ -3,7 +3,7 @@ import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 function Footer() {
   return (
-    <footer className="w-full bg-gradient-to-b from-[#4A2C2A] to-[#2E1A18] text-white pt-14 pb-6 px-6">
+    <footer className="w-full bg-linear-to-b from-[#4A2C2A] to-[#2E1A18] text-white pt-14 pb-6 px-6">
 
       <div className="max-w-6xl mx-auto text-center mb-10">
         <h2 className="text-3xl font-bold mb-2">Café Delight</h2>
