@@ -1,3 +1,4 @@
+import AboutCafe from "./components/AboutCafe";
 import Chooseus from "./components/Chooseus";
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
@@ -14,6 +15,7 @@ export default function Home() {
       <Chooseus/>
       <Popularcategory/>
       <OfferBanner/>
+      <AboutCafe/>
     </>
   );
 }
