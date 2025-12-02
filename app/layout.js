@@ -1,3 +1,4 @@
+import AppProvider from "@/context/AppContext";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -27,9 +28,11 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ToastContainer />
-        <Navbar/>
-        {children}
-        <Footer/>
+        <Navbar />
+        <AppProvider>
+          {children}
+        </AppProvider>
+        <Footer />
       </body>
     </html>
   );
