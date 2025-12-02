@@ -1,36 +1,32 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import axios from "axios";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 function LoginForm() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
-
-  const router = useRouter();
 
   const handleLogin = async () => {
     try {
       setLoading(true);
-      setErrorMsg("");
 
       const res = await axios.post("/api/auth/login", {
         email,
         password,
       });
 
-      localStorage.setItem("token", res.data.token);
+      toast.success("Login Successful! 🎉");
 
-      router.push("/"); 
+      localStorage.setItem("token", res.data.token);
+      router.push("/");
     } catch (err) {
-      if (err.response) {
-        setErrorMsg(err.response.data.error);
-      } else {
-        setErrorMsg("Something went wrong");
-      }
+      const msg = err.response?.data?.error || "Something went wrong";
+      toast.error(msg);
     } finally {
       setLoading(false);
     }
@@ -43,10 +39,6 @@ function LoginForm() {
         <h2 className="text-3xl font-bold text-center text-[#4A2C2A] mb-6">
           Login
         </h2>
-
-        {errorMsg && (
-          <p className="text-red-500 text-center mb-3">{errorMsg}</p>
-        )}
 
         <input
           type="email"
@@ -74,9 +66,7 @@ function LoginForm() {
 
         <p className="text-center mt-4 text-sm">
           Don’t have an account?{" "}
-          <a href="/signup" className="text-[#4A2C2A] font-semibold">
-            Sign Up
-          </a>
+          <a href="/signup" className="text-[#4A2C2A] font-semibold">Sign Up</a>
         </p>
 
       </div>
