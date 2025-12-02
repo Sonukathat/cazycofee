@@ -9,26 +9,18 @@ function LoginForm() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
 
-  const handleLogin = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     try {
-      setLoading(true);
+      const res = await axios.post("/api/auth/login", { email, password });
 
-      const res = await axios.post("/api/auth/login", {
-        email,
-        password,
-      });
-
-      toast.success("Login Successful! 🎉");
-
+      toast.success("Login Successful!");
       localStorage.setItem("token", res.data.token);
       router.push("/");
     } catch (err) {
-      const msg = err.response?.data?.error || "Something went wrong";
-      toast.error(msg);
-    } finally {
-      setLoading(false);
+      toast.error(err.response?.data?.error || "Something went wrong");
     }
   };
 
@@ -40,29 +32,33 @@ function LoginForm() {
           Login
         </h2>
 
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full p-3 mb-4 border rounded-xl outline-none"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Email"
+            className="w-full p-3 mb-4 border rounded-xl outline-none text-black"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full p-3 mb-6 border rounded-xl outline-none"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full p-3 mb-6 border rounded-xl outline-none text-black"
+            required
+            minLength={6}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-        <button
-          className="w-full bg-[#4A2C2A] text-white py-3 rounded-full text-lg"
-          onClick={handleLogin}
-          disabled={loading}
-        >
-          {loading ? "Logging in..." : "Login"}
-        </button>
+          <button
+            type="submit"
+            className="w-full bg-[#4A2C2A] text-white py-3 rounded-full text-lg"
+          >
+            Login
+          </button>
+        </form>
 
         <p className="text-center mt-4 text-sm">
           Don’t have an account?{" "}
