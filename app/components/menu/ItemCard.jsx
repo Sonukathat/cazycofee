@@ -17,7 +17,7 @@ export default function ItemCard({ item }) {
       </p>
 
       <div className="flex justify-between items-center mt-4">
-        <span className="font-medium">₹{item.price}</span>
+        <span className="font-medium text-gray-600">₹{item.price}</span>
 
         <button
           onClick={() => addToCart(item)}
