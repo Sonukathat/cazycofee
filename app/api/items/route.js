@@ -1,6 +1,12 @@
 import { connectDB } from "@/lib/db";
-import Category from "@/lib/models/Category";
 import Item from "@/lib/models/Item";
+import Category from "@/lib/models/Category";
+
+export async function GET() {
+  await connectDB();
+  const items = await Item.find().populate("categoryId");
+  return Response.json(items);
+}
 
 export async function POST(req) {
   await connectDB();
@@ -9,18 +15,14 @@ export async function POST(req) {
 
   if (!categoryName || !name || !price) {
     return Response.json(
-      { error: "categoryName, name and price required" },
+      { error: "categoryName, name, price required" },
       { status: 400 }
     );
   }
 
   const category = await Category.findOne({ name: categoryName });
-
   if (!category) {
-    return Response.json(
-      { error: "Category not found" },
-      { status: 404 }
-    );
+    return Response.json({ error: "Category not found" }, { status: 404 });
   }
 
   const item = await Item.create({
@@ -31,9 +33,5 @@ export async function POST(req) {
     image,
   });
 
-  return Response.json({
-    message: "Item Added",
-    item,
-    category: category.name,
-  });
+  return Response.json({ message: "Item Added", item });
 }
