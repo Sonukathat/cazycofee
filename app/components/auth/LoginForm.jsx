@@ -1,4 +1,41 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+
 function LoginForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const router = useRouter();
+
+  const handleLogin = async () => {
+    try {
+      setLoading(true);
+      setErrorMsg("");
+
+      const res = await axios.post("/api/auth/login", {
+        email,
+        password,
+      });
+
+      localStorage.setItem("token", res.data.token);
+
+      router.push("/"); 
+    } catch (err) {
+      if (err.response) {
+        setErrorMsg(err.response.data.error);
+      } else {
+        setErrorMsg("Something went wrong");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="w-full h-screen flex items-center justify-center bg-[#FFF3E4]">
       <div className="bg-white p-10 rounded-2xl shadow-xl w-full max-w-md">
@@ -7,24 +44,39 @@ function LoginForm() {
           Login
         </h2>
 
+        {errorMsg && (
+          <p className="text-red-500 text-center mb-3">{errorMsg}</p>
+        )}
+
         <input
           type="email"
           placeholder="Email"
           className="w-full p-3 mb-4 border rounded-xl outline-none"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <input
           type="password"
           placeholder="Password"
           className="w-full p-3 mb-6 border rounded-xl outline-none"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button className="w-full bg-[#4A2C2A] text-white py-3 rounded-full text-lg">
-          Login
+        <button
+          className="w-full bg-[#4A2C2A] text-white py-3 rounded-full text-lg"
+          onClick={handleLogin}
+          disabled={loading}
+        >
+          {loading ? "Logging in..." : "Login"}
         </button>
 
         <p className="text-center mt-4 text-sm">
-          Don’t have an account? <a href="/signup" className="text-[#4A2C2A] font-semibold">Sign Up</a>
+          Don’t have an account?{" "}
+          <a href="/signup" className="text-[#4A2C2A] font-semibold">
+            Sign Up
+          </a>
         </p>
 
       </div>
