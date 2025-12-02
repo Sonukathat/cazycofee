@@ -13,7 +13,6 @@ import VisitUs from "./components/VisitUs";
 export default function Home() {
   return (
     <>
-      <Navbar/>
       <HeroSection/>
       <Specialmenu/>
       <Chooseus/>
@@ -23,7 +22,6 @@ export default function Home() {
       <Testimonials/>
       <Photogallery/>
       <VisitUs/>
-      <Footer/>
     </>
   );
 }
