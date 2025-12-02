@@ -1,6 +1,6 @@
 export default function SearchBar({ search, setSearch }) {
   return (
-    <div className="max-w-2xl mx-auto w-full mb-6">
+    <div className="max-w-2xl mx-auto w-full mb-6 text-gray-600">
       <input
         value={search}
         onChange={(e) => setSearch(e.target.value)}

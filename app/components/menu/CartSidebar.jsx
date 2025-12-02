@@ -14,7 +14,7 @@ export default function CartSidebar() {
         <p className="text-gray-500 mt-4">Cart is empty</p>
       ) : (
         <>
-          <div className="mt-4 space-y-3">
+          <div className="mt-4 space-y-3 text-gray-600">
             {cart.map((c) => (
               <div key={c._id} className="flex justify-between">
                 <span>{c.name}</span>
@@ -23,9 +23,9 @@ export default function CartSidebar() {
             ))}
           </div>
 
-          <hr className="my-4" />
+          <hr className="my-4 text-gray-600" />
 
-          <div className="flex justify-between text-lg font-semibold">
+          <div className="flex justify-between text-lg font-semibold text-gray-600">
             <span>Total:</span>
             <span>₹{total}</span>
           </div>
