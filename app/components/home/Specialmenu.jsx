@@ -86,7 +86,7 @@ function Specialmenu() {
               <span className="font-bold text-[#4A2C2A]">{item.price}</span>
 
               <button className="px-4 py-2 bg-[#4A2C2A] text-white rounded-full text-sm">
-                Order
+                Add to Cart
               </button>
             </div>
           </div>

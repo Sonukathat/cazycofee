@@ -3,7 +3,7 @@ import CafeStory from "../components/about/CafeStory";
 import CafeEnvironment from "../components/about/CafeEnvironment";
 import QualityIngredients from "../components/about/QualityIngredients";
 import TeamSection from "../components/about/TeamSection";
-import Chooseus from "../components/Chooseus";
+import Chooseus from "../components/home/Chooseus";
 import MiniGallery from "../components/about/MiniGallery";
 // import VisitUs from "../components/VisitUs";
 
