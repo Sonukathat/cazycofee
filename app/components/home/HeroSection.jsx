@@ -26,13 +26,6 @@ function HeroSection() {
           </button>
         </div>
 
-        <div className="flex items-center bg-white/90 rounded-full px-4 py-2">
-          <input
-            type="text"
-            placeholder="Search coffee, snacks…"
-            className="w-full bg-transparent outline-none text-black px-2"
-          />
-        </div>
       </div>
     </div>
   );
