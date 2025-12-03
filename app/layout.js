@@ -1,10 +1,9 @@
-import AppProvider from "@/context/AppContext";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "./components/home/Navbar";
+import Footer from "./components/home/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,9 +28,7 @@ export default function RootLayout({ children }) {
       >
         <ToastContainer />
         <Navbar />
-        <AppProvider>
           {children}
-        </AppProvider>
         <Footer />
       </body>
     </html>

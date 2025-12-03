@@ -1,14 +1,14 @@
-import AboutCafe from "./components/AboutCafe";
-import Chooseus from "./components/Chooseus";
-import Footer from "./components/Footer";
-import HeroSection from "./components/HeroSection";
-import Navbar from "./components/Navbar";
-import OfferBanner from "./components/OfferBanner";
-import Photogallery from "./components/Photogallery";
-import Popularcategory from "./components/Popularcategory";
-import Specialmenu from "./components/Specialmenu";
-import Testimonials from "./components/Testimonials";
-import VisitUs from "./components/VisitUs";
+import AboutCafe from "./components/home/AboutCafe";
+import Chooseus from "./components/home/Chooseus";
+import Footer from "./components/home/Footer";
+import HeroSection from "./components/home/HeroSection";
+import Navbar from "./components/home/Navbar";
+import OfferBanner from "./components/home/OfferBanner";
+import Photogallery from "./components/home/Photogallery";
+import Popularcategory from "./components/home/Popularcategory";
+import Specialmenu from "./components/home/Specialmenu";
+import Testimonials from "./components/home/Testimonials";
+import VisitUs from "./components/home/VisitUs";
 
 export default function Home() {
   return (

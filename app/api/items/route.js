@@ -4,7 +4,7 @@ import Category from "@/lib/models/Category";
 
 export async function GET() {
   await connectDB();
-  const items = await Item.find().populate("categoryId");
+  const items = await Item.find();
   return Response.json(items);
 }
 
