@@ -1,5 +1,7 @@
 "use client";
-import { createContext, useContext, useEffect, useState } from "react";
+
+import { toast } from "react-toastify";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const AppContext = createContext();
 export const useApp = () => useContext(AppContext);
@@ -9,29 +11,27 @@ export default function AppProvider({ children }) {
   const [allItems, setAllItems] = useState([]);
   const [cart, setCart] = useState([]);
 
-  // Load Data From Backend
   useEffect(() => {
     fetchCategories();
     fetchAllItems();
-    loadCart();
   }, []);
 
   async function fetchCategories() {
     const res = await fetch("/api/category");
     const data = await res.json();
-    setCategories(data);
+    setCategories(Array.isArray(data) ? data : []);
   }
 
   async function fetchAllItems() {
     const res = await fetch("/api/items");
     const data = await res.json();
-    setAllItems(data);
+    setAllItems(Array.isArray(data) ? data : []);
   }
 
-  function loadCart() {
-    const c = localStorage.getItem("cafe_cart");
-    setCart(c ? JSON.parse(c) : []);
-  }
+  useEffect(() => {
+    const stored = localStorage.getItem("cafe_cart");
+    if (stored) setCart(JSON.parse(stored));
+  }, []);
 
   function saveCart(data) {
     setCart(data);
@@ -39,15 +39,38 @@ export default function AppProvider({ children }) {
   }
 
   function addToCart(item) {
-    const exist = cart.find((i) => i._id === item._id);
-    if (exist) {
-      const updated = cart.map((i) =>
-        i._id === item._id ? { ...i, qty: i.qty + 1 } : i
-      );
-      saveCart(updated);
-    } else {
-      saveCart([...cart, { ...item, qty: 1 }]);
-    }
+  const exist = cart.find((i) => i._id === item._id);
+
+  if (exist) {
+    const updated = cart.map((i) =>
+      i._id === item._id ? { ...i, qty: i.qty + 1 } : i
+    );
+    saveCart(updated);
+    toast.success("Quantity updated");
+  } else {
+    saveCart([...cart, { ...item, qty: 1 }]);
+    toast.success("Item added to cart");
+  }
+}
+  function removeFromCart(id) {
+    const updated = cart.filter((i) => i._id !== id);
+    saveCart(updated);
+  }
+
+  function increaseQty(id) {
+    const updated = cart.map((i) =>
+      i._id === id ? { ...i, qty: i.qty + 1 } : i
+    );
+    saveCart(updated);
+  }
+
+  function decreaseQty(id) {
+    const updated = cart
+      .map((i) =>
+        i._id === id ? { ...i, qty: i.qty - 1 } : i
+      )
+      .filter((i) => i.qty > 0);
+    saveCart(updated);
   }
 
   return (
@@ -57,6 +80,9 @@ export default function AppProvider({ children }) {
         allItems,
         cart,
         addToCart,
+        removeFromCart,
+        increaseQty,
+        decreaseQty,
       }}
     >
       {children}

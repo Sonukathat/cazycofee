@@ -48,6 +48,9 @@ function Navbar() {
         >
           Login
         </Link>
+        <Link href="/cart" className="px-4 py-2 rounded-full bg-[#4A2C2A] text-white">
+          Cart
+        </Link>
 
         <button
           className="md:hidden text-2xl"
