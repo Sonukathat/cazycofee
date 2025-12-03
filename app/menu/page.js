@@ -41,11 +41,7 @@ export default function MenuPage() {
       <SearchBar search={search} setSearch={setSearch} />
 
       <div className="flex gap-6">
-        <div className="flex-1">
           <ItemsGrid items={filtered} />
-        </div>
-
-        <CartSidebar />
       </div>
     </div>
   );
