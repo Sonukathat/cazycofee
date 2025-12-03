@@ -39,22 +39,23 @@ export default function AppProvider({ children }) {
   }
 
   function addToCart(item) {
-  const exist = cart.find((i) => i._id === item._id);
+    const exist = cart.find((i) => i._id === item._id);
 
-  if (exist) {
-    const updated = cart.map((i) =>
-      i._id === item._id ? { ...i, qty: i.qty + 1 } : i
-    );
-    saveCart(updated);
-    toast.success("Quantity updated");
-  } else {
-    saveCart([...cart, { ...item, qty: 1 }]);
-    toast.success("Item added to cart");
+    if (exist) {
+      const updated = cart.map((i) =>
+        i._id === item._id ? { ...i, qty: i.qty + 1 } : i
+      );
+      saveCart(updated);
+      toast.success("Quantity updated");
+    } else {
+      saveCart([...cart, { ...item, qty: 1 }]);
+      toast.success("Item added to cart");
+    }
   }
-}
   function removeFromCart(id) {
     const updated = cart.filter((i) => i._id !== id);
     saveCart(updated);
+    toast.info("Item removed from cart");
   }
 
   function increaseQty(id) {
