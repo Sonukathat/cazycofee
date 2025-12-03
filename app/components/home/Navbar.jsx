@@ -51,12 +51,12 @@ function Navbar() {
             Login
           </Link>
 
-          <Link
+          {/* <Link
             href="/cart"
             className="p-2 rounded-full shadow flex items-center justify-center"
           >
             <FiShoppingCart size={20} />
-          </Link>
+          </Link> */}
         </div>
 
         <button
@@ -89,13 +89,13 @@ function Navbar() {
           >
             Login
           </Link>
-          <Link
+          {/* <Link
             href="/cart"
             onClick={() => setOpen(false)}
             className="bg-[#FFF3E4] text-[#4A2C2A] p-3 rounded-full shadow flex items-center justify-center"
           >
             <FiShoppingCart size={22} />
-          </Link>
+          </Link> */}
         </div>
       )}
 
