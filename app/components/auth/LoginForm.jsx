@@ -17,7 +17,11 @@ function LoginForm() {
       const res = await axios.post("/api/auth/login", { email, password });
 
       toast.success("Login Successful!");
+
+      // 📌 IMPORTANT: store both token + userId
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("userId", res.data.user._id);
+
       router.push("/");
     } catch (err) {
       toast.error(err.response?.data?.error || "Something went wrong");
