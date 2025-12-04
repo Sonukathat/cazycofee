@@ -6,6 +6,9 @@ import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
 import { FiShoppingCart } from "react-icons/fi";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 
 import { AiFillHome } from "react-icons/ai";
 import { MdRestaurantMenu } from "react-icons/md";
