@@ -1,7 +1,8 @@
 "use client";
 
 export default function ItemsList({ items }) {
-  const userId = "692e451e204faebb90265a7c"; // demo user
+  const userId = localStorage.getItem("userId")
+  console.log(userId)
 
   async function addToCart(itemId) {
     const res = await fetch(`/api/cart/${userId}`, {

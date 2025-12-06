@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
 import Cart from "@/lib/models/Cart";
+import Item from "@/lib/models/Item";
+import Category from "@/lib/models/Category";
 
 export async function GET(req, { params }) {
   await connectDB();
@@ -8,6 +10,7 @@ export async function GET(req, { params }) {
 
   const cart = await Cart.findOne({ userId }).populate({
     path: "items.itemId",
+    model: Item,
     select: "name price image"
   });
 
@@ -15,8 +18,6 @@ export async function GET(req, { params }) {
 
   return NextResponse.json(cart);
 }
-
-
 
 export async function POST(req, { params }) {
   try {
